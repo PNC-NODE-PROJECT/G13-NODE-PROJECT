@@ -21,5 +21,15 @@ router.post("/", (req, res) => {
   res.send({ message: message });
 });
 
-
+router.delete("/:id",(req,res) =>{
+    let id = req.params.id;
+    let isDelete = serverModel.removeQuizeById(id);
+    let message;
+    if(isDelete){
+      message = "Deleted successfully";
+    }else{
+      message = "not delete";
+    }
+    res.send({ message: message });
+})
 module.exports = router;

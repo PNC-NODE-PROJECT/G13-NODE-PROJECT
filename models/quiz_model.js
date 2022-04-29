@@ -30,7 +30,14 @@ function save(quize) {
 function getAllQuizzes() {
   return load();
 }
-
+function getOneQuiz(id){
+  let quizzes = load();
+  quizzes.forEach(quiz => {
+    if(quiz.id === id){
+      return quiz;
+    }
+  });
+}
 
 /**
  *
@@ -50,7 +57,6 @@ function createQuize(newQuize) {
 }
 
 // remove question by id
-
 function removeQuizeById(id) {
   let quizzes = load();
   let isDeleted;
@@ -58,6 +64,7 @@ function removeQuizeById(id) {
     let index = quizzes.findIndex((quize) => quize.id === id);
     if (index >= 0) {
       quizzes.splice(index, 1);
+      save(quizzes);
       isDeleted = true;
     } else {
       isDeleted = false;
@@ -70,5 +77,6 @@ function removeQuizeById(id) {
 module.exports = {
   createQuize,
   getAllQuizzes,
-  removeQuizeById
+  removeQuizeById,
+  getOneQuiz
 };

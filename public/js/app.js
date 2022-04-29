@@ -8,6 +8,7 @@ function displayQuiz() {
     axios.get(URL)
         .then((response) => {
             let quizes = response.data;
+            console.log(quizes);
             refreshDOM(quizes);
         })
 
