@@ -4,10 +4,12 @@ const router = express.Router();
 const serverModel = require("../models/quiz_model");
 
 
+// get all quizzes route
+router.get("/", (req, res) => {
+  let quizzes = serverModel.getAllQuizzes();
+  res.send(quizzes);
+});
 
-router.get("/",(req, res) => {
-  res.send(serverModel.getAllQuizzes());
-})
 // Create route
 router.post("/", (req, res) => {
   let newQuizes = req.body;
