@@ -7,7 +7,7 @@ const serverModel = require("../models/quiz_model");
 router.post("/", (req, res) => {
   let newQuizes = req.body;
   let message;
-  let isCreated = serverModel.createQuize(newQuizes);
+  let isCreated = serverModel.createQuiz(newQuizes);
   if (isCreated) {
     message = "Created successfully";
   } else {

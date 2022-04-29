@@ -35,7 +35,7 @@ function getAllQuizzes() {
  * @param {*} newQuize :
  * @returns :
  */
-function createQuize(newQuize) {
+function createQuiz(newQuize) {
   let quizzes = load();
   let isValid =
     newQuize.title && newQuize.choose && newQuize.correct && newQuize.score;
@@ -49,11 +49,11 @@ function createQuize(newQuize) {
 
 // remove question by id
 
-function removeQuizeById(id) {
+function removeQuizById(id) {
   let quizzes = load();
   let isDeleted;
   if (id != undefined) {
-    let index = quizzes.findIndex((quize) => quize.id === id);
+    let index = quizzes.findIndex((quiz) => quiz.id === id);
     if (index >= 0) {
       quizzes.splice(index, 1);
       isDeleted = true;
@@ -66,7 +66,7 @@ function removeQuizeById(id) {
 // update question
 
 module.exports = {
-  createQuize,
+  createQuiz,
   getAllQuizzes,
-  removeQuizeById
+  removeQuizById
 };
