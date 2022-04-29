@@ -1,12 +1,6 @@
 
 
 let CONTAINER = document.getElementById("container");
-export function hide(element) {
-    element.style.display = 'none';
-}
-export function show(element) {
-    element.style.display = 'block';
-}
 export function refreshDOM(quizes) {
 
     quizes.forEach(quiz => {
@@ -70,4 +64,10 @@ export function refreshDOM(quizes) {
         CONTAINER.appendChild(container);
 
     });
+}
+export function hide(element) {
+    element.style.display = 'none';
+}
+export function show(element) {
+    element.style.display = 'block';
 }

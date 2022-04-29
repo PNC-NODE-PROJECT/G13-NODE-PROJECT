@@ -1,3 +1,4 @@
 package-lock.json
 node_modules
-data/production_db.json
+.env
+.vscode
