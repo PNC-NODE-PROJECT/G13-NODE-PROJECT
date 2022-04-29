@@ -1,6 +1,6 @@
 
 
-import {refreshDOM,hide,show} from '../utils/domutils.js';
+import {refreshDOM,hide,show,formCreateQuiz} from '../utils/domutils.js';
 
 // function
 function displayQuiz() {
@@ -12,4 +12,5 @@ function displayQuiz() {
         })
 
 }
-displayQuiz();
+formCreateQuiz();
+// displayQuiz();

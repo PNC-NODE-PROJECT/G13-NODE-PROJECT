@@ -1,11 +1,13 @@
 const fs = require("fs");
 require("dotenv").config();
-const {
-  v4: uuidv4
-} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 const router = require("../routes/quiz_route");
 
 let PATH = "";
+/**
+ *@return : if we would like to develop on app we need to manage on 
+ data bd file by youing this comment @env:NODE_ENV = 'development'
+ */
 if (process.env.NODE_ENV === "production") {
   PATH = "./data/" + process.env.DATABASE_PRODUCTION;
 } else {
@@ -21,26 +23,30 @@ function load() {
 /**
  *
  * @param {*} quize
- *
+ *@return : this function writh data afther we delete or update
+
  */
 function save(quize) {
   fs.writeFileSync(PATH, JSON.stringify(quize));
 }
-// get all quize and
+/**
+ * 
+ * @returns all quizzes that read from the database
+ */
 function getAllQuizzes() {
   return load();
 }
 
-
 /**
  *
  * @param {*} newQuize :
- * @returns :
+ * @returns : create a quiz 
+ *  the function wil be return true if all data are valid
  */
 function createQuiz(newQuize) {
   let quizzes = load();
   let isValid =
-    newQuize.title && newQuize.choose && newQuize.correct && newQuize.score;
+    newQuize.title!==null && newQuize.choose!==null && newQuize.correct!==null && newQuize.score!==null;
   if (isValid) {
     newQuize.id = uuidv4();
     quizzes.push(newQuize);
@@ -49,7 +55,13 @@ function createQuiz(newQuize) {
   return isValid;
 }
 
-// remove question by id
+/**
+ *
+ * @param {*} id
+ * @returns if quize had been removed the function will be return
+ * true but otherwize fale
+ *
+ */
 
 function removeQuizById(id) {
   let quizzes = load();
@@ -70,5 +82,5 @@ function removeQuizById(id) {
 module.exports = {
   createQuiz,
   getAllQuizzes,
-  removeQuizById
+  removeQuizById,
 };
