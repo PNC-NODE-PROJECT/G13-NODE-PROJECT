@@ -30,6 +30,22 @@ function save(quize) {
 function getAllQuizzes() {
   return load();
 }
+
+/**
+ * 
+ * @param {*} idOneQuiz 
+ * @returns one quiz
+ */
+ function getOneQuiz(idOneQuiz){
+  let quizzes = load();
+  let quiz;
+  quizzes.forEach(element => {
+      if(element.id === idOneQuiz){
+          quiz = element;
+      }        
+  });
+  return quiz;
+}
 /**
  *
  * @param {*} newQuize :
@@ -73,4 +89,5 @@ module.exports = {
   createQuiz,
   getAllQuizzes,
   removeQuizeById,
+  getOneQuiz
 };

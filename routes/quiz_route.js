@@ -10,8 +10,24 @@ router.get("/", (req, res) => {
   res.send(quizzes);
 });
 
+/**
+* return one quiz route
+*/
+router.get("/:id", (req, res) => {
+  let idOfQuiz = req.params.id;
+  let message;
+  let getIdOfQuiz = serverModel.getOneQuiz(idOfQuiz);
+  if (getIdOfQuiz) {
+    message = getIdOfQuiz;
+  } else {
+    message = "not found"
+  }
+  res.send(message);
+})
+
+
 // Create route
-router.post("/", (req, res) =>{
+router.post("/", (req, res) => {
   let newQuizes = req.body;
   let message;
   let isCreated = serverModel.createQuiz(newQuizes);
@@ -26,13 +42,13 @@ router.post("/", (req, res) =>{
 /**
  * delete quiz
  */
- router.delete("/:id",(req,res) =>{
+router.delete("/:id", (req, res) => {
   let id = req.params.id;
   let isDelete = serverModel.removeQuizeById(id);
   let message;
-  if(isDelete){
+  if (isDelete) {
     message = "Deleted successfully";
-  }else{
+  } else {
     message = "not delete";
   }
   res.send({ message: message });
