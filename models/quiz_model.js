@@ -30,6 +30,8 @@ function save(quize) {
 function getAllQuizzes() {
   return load();
 }
+
+
 /**
  *
  * @param {*} newQuize :

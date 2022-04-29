@@ -3,6 +3,11 @@ const router = express.Router();
 
 const serverModel = require("../models/quiz_model");
 
+
+
+router.get("/",(req, res) => {
+  res.send(serverModel.getAllQuizzes());
+})
 // Create route
 router.post("/", (req, res) => {
   let newQuizes = req.body;
