@@ -107,8 +107,6 @@ function questionDom() {
     parentQuestion.appendChild(inputQuestion);
     let form = document.querySelector('.form');
     form.appendChild(inputQuestion);
-
-  
 }
 function choiceDom(){
     let form = document.querySelector('.form');
