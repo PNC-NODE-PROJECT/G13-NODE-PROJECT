@@ -36,13 +36,13 @@ function getAllQuizzes() {
  * @param {*} idOneQuiz 
  * @returns one quiz
  */
- function getOneQuiz(idOneQuiz){
+function getOneQuiz(idOneQuiz) {
   let quizzes = load();
   let quiz;
   quizzes.forEach(element => {
-      if(element.id === idOneQuiz){
-          quiz = element;
-      }        
+    if (element.id === idOneQuiz) {
+      quiz = element;
+    }
   });
   return quiz;
 }
@@ -70,6 +70,7 @@ function createQuiz(newQuize) {
  */
 function removeQuizeById(id) {
   let quizzes = load();
+  console.log(quizzes);
   let isDeleted;
   if (id != undefined) {
     let index = quizzes.findIndex((quiz) => quiz.id === id);
@@ -84,6 +85,7 @@ function removeQuizeById(id) {
   return isDeleted;
 }
 // update question
+
 
 module.exports = {
   createQuiz,

@@ -2,24 +2,28 @@
 
 let CONTAINER = document.getElementById("container");
 export function refreshDOM(quizes) {
-
+    while (CONTAINER.firstChild) {
+        CONTAINER.removeChild(CONTAINER.lastChild);
+    }
     quizes.forEach(quiz => {
         let container = document.createElement('div');
         container.className = "container mt-5";
 
         let card = document.createElement('div');
         card.className = "card bg-white";
+        card.id = quiz.id;
 
         let cardHeader = document.createElement("div");
         cardHeader.className = "card-header d-flex justify-content-end";
         cardHeader.style.backgroundColor = "#C18FF4"
 
         let btnDelete = document.createElement("div");
-        btnDelete.className = "btn";
+        btnDelete.className = "btn delete";
+        btnDelete.dataset.delete ="delete";
         btnDelete.textContent = "Delete";
 
         let btnEdit = document.createElement("div");
-        btnEdit.className = "btn";
+        btnEdit.className = "btn Edit";
         btnEdit.textContent = "Edit";
 
         cardHeader.appendChild(btnDelete);
@@ -70,4 +74,7 @@ export function hide(element) {
 }
 export function show(element) {
     element.style.display = 'block';
+}
+export function playQuiz(){
+    
 }

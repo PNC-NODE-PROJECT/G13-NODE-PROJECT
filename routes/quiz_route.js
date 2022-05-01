@@ -54,3 +54,7 @@ router.delete("/:id", (req, res) => {
   res.send({ message: message });
 })
 module.exports = router;
+
+/**
+ * update quiz
+ */
