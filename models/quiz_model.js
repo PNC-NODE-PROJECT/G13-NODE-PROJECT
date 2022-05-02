@@ -2,7 +2,6 @@ const fs = require("fs");
 require("dotenv").config();
 const { v4: uuidv4 } = require("uuid");
 const router = require("../routes/quiz_route");
-
 let PATH = "";
 /**
  *@return : if we would like to develop on app we need to manage on
@@ -18,8 +17,6 @@ if (process.env.NODE_ENV === "production") {
 function load() {
   return JSON.parse(fs.readFileSync(PATH));
 }
-///
-
 /**
  *
  * @param {*} quize
@@ -29,6 +26,7 @@ function load() {
 function save(quize) {
   fs.writeFileSync(PATH, JSON.stringify(quize));
 }
+
 /**
  *
  * @returns all quizzes that read from the database
@@ -44,7 +42,7 @@ function getAllQuizzes() {
  */
 function getOneQuiz(idOneQuiz) {
   let quizzes = load();
-  let quiz;
+  let quiz={};
   quizzes.forEach((element) => {
     if (element.id === idOneQuiz) {
       quiz = element;
@@ -60,23 +58,15 @@ function getOneQuiz(idOneQuiz) {
  */
 function createQuiz(newQuize) {
   let quizzes = load();
-  let isValid =
-    newQuize.title !== null &&
-    newQuize.choose !== null &&
-    newQuize.correct !== null &&
-    newQuize.score !== null;
-  if (isValid) {
     newQuize.id = uuidv4();
     quizzes.push(newQuize);
     save(quizzes);
-  }
-  return isValid;
 }
 
 /**
  *
  * @param {*} id
- * @returns remov quiz form data
+ * @returns remove quiz form data by id that client has provided
  */
 function removeQuizeById(id) {
   let quizzes = load();
@@ -93,11 +83,37 @@ function removeQuizeById(id) {
   }
   return isDeleted;
 }
-// update question
+/**
+ * 
+ * @param {*} quiz 
+ * @param {*} id 
+ * @returns : update question function by id that recieved from client 
+ */
 
+function updateQuiz(quiz,id){
+  let quizzes = load();
+  let status=false;
+  let index = quizzes.findIndex((quiz) => quiz.id==id);
+  if(index !== -1){
+     
+        quizzes[index].title = quiz.title;
+        quizzes[index].question = quiz.question;
+        quizzes[index].choices = quiz.choices;
+        quizzes[index].correct = quiz.correct;
+        save(quizzes);
+      
+    }else{
+      console.log("error");
+    }
+    return status;
+}
+/**
+ * export module
+ */
 module.exports = {
   createQuiz,
   getAllQuizzes,
   removeQuizeById,
   getOneQuiz,
+  updateQuiz
 };

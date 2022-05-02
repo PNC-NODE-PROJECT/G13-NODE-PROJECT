@@ -17,12 +17,8 @@ router.get("/:id", (req, res) => {
   let idOfQuiz = req.params.id;
   let message;
   let getIdOfQuiz = serverModel.getOneQuiz(idOfQuiz);
-  if (getIdOfQuiz) {
-    message = getIdOfQuiz;
-  } else {
-    message = "not found"
-  }
-  res.send(message);
+ 
+  res.send(getIdOfQuiz);
 })
 
 
@@ -52,5 +48,16 @@ router.delete("/:id", (req, res) => {
     message = "not delete";
   }
   res.send({ message: message });
+})
+
+/**
+ * @params : id of quiz
+ * @returns : this route for updateQuiz by id 
+ */
+
+ router.patch("/:id",(req, res)=>{
+  let id = req.params.id;
+  serverModel.updateQuiz(req.body, id);
+  res.send("Update successfully");
 })
 module.exports = router;
