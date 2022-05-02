@@ -1,7 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap');
 body{
-    background: #F0EBF8;
+    font-family: 'Overpass', sans-serif;
+}
+nav{
+    /* background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%); */
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+.content{
+    height: 200px;
+    align-items: center;
+}
+h1{
+    font-weight: bolder;
+}
+h1{
+    font-weight: bold;
+}
+p{
+    font-size:20px;
+    font-weight: 200;
 }
 
-form{
-    background: #fff;
+.btn-create{
+    position: fixed;
+    z-index: 1;
+    bottom: -1;
+    right: 0;
+    margin-right: 19%;
+    /* margin-top: 100px; */
+   
 }

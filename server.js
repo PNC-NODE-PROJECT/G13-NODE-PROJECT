@@ -16,4 +16,4 @@ const quizRouter = require("./routes/quiz_route.js");
 
 
 // create route 
-app.use("/api/quize", quizRouter);
+app.use("/api/quiz",quizRouter);
