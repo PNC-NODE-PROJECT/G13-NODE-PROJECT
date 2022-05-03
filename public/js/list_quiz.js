@@ -15,7 +15,10 @@ function displayQuiz() {
 
 function createQuiz() {
   let newQuiz =checkQuiz();
-  axios.post("http://localhost:80/api/quiz",newQuiz);
+  if(newQuiz!==false) {
+    axios.post("http://localhost:80/api/quiz",newQuiz);
+
+  }
 
 }
 
@@ -24,8 +27,9 @@ function createQuiz() {
    * @param {*} e
    * @returns : eventerlistener  
    */
- function checked(e) {
+function checked(e) {
   e.preventDefault();
+  console.log("checked");
   let id = "";
   let btnUpdate = document.querySelector('.btnUpdate');
   if(e.target.className==="btn-delete btn btn-danger"){
@@ -42,12 +46,21 @@ function createQuiz() {
   }
 }
 
+/**
+ * @param {*} remove quize
+ */
 
-//call back function
+function deleteQuiz(id) {
+  let quizId = id.id;
+  axios.delete("http://localhost:80/api/quiz/"+quizId);
+ }
+ 
+// call back function
 displayQuiz();
+
 let btnSubmit  = document.querySelector("#btnSubmit");
 btnSubmit.addEventListener("click",createQuiz);
 let contentQuiz = document.querySelector(".content-quiz");
-contentQuiz.addEventListener('click',checked);
+document.body.addEventListener('click',checked);
 
 

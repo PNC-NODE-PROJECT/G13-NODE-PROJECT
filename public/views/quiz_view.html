@@ -22,7 +22,9 @@
           <a class="tex-bold" href="../index.html">Home</a>
         </div>
         <div class="col mt-1">
-          <a class="tex-bold text-center" href="list_quiz_view.html">Collection</a>
+          <a class="tex-bold text-center" href="list_quiz_view.html"
+            >Collection</a
+          >
         </div>
         <div class="btn btn-primary rounded">
           <a class="tex-bold text-white-50" href="#">Start Quiz</a>
@@ -30,42 +32,62 @@
       </div>
     </nav>
     <!-- THEARA RIT(WEB 2022), [5/1/2022 11:35 AM] -->
-<div class="playQuiz mt-5">
-        <div class="card m-auto mt-5 col-6">
-            <div class="card-body">
-                <div class="card-title d-flex justify-content-between">
-                    <h2>Grammer</h2>
-                    <h5 class="mt-2">50pt</h5>
+    <div class="playQuiz mt-5">
+      <div class="card m-auto mt-5 col-6">
+        <div class="card-body">
+          <div class="card-title d-flex justify-content-between">
+            <h2>Grammer</h2>
+            <h5 class="mt-2">50pt</h5>
+          </div>
+          <hr />
+          <div class="card-text">
+            <div id="quiz">
+              <div id="question">1. MY QUESTION</div>
+              <div class="container">
+                <div class="row m-auto">
+                  <div
+                    class="col btn m-3"
+                    onclick="checkAnswer ('A')"
+                    style="background: #c18ff4"
+                  >
+                    Column
+                  </div>
+                  <div
+                    class="col btn m-3"
+                    onclick="checkAnswer ('B')"
+                    style="background: #c18ff4"
+                  >
+                    Column
+                  </div>
+                  <div class="w-100"></div>
+                  <div
+                    class="col btn m-3"
+                    onclick="checkAnswer ('C')"
+                    style="background: #c18ff4"
+                  >
+                    Column
+                  </div>
+                  <div
+                    class="col btn m-3"
+                    onclick="checkAnswer ('D')"
+                    style="background: #c18ff4"
+                  >
+                    Column
+                  </div>
                 </div>
-                <hr>
-                <div class="card-text">
-                    <div id="quiz">
-                        <div id="question">1. MY QUESTION</div>
-                        <div class="container">
-                            <div class="row m-auto ">
-                              <div class="col btn m-3"onclick="checkAnswer ('A')" style="background: #C18FF4 ">Column</div>
-                              <div class="col btn m-3"onclick="checkAnswer ('B')"style="background: #C18FF4 ">Column</div>
-                              <div class="w-100"></div>
-                              <div class="col btn m-3"onclick="checkAnswer ('C')"style="background: #C18FF4 ">Column</div>
-                              <div class="col btn m-3"onclick="checkAnswer ('D')"style="background: #C18FF4 ">Column</div>
-                            </div>
-                            <div class="row m-auto d-flex justify-content-between">
-                                <div class="col col-3 btn m-3 btn-primary" onclick="move()">Previous</div>
-                                <div class="col col-3 btn m-3 btn-primary" onclick="move()">Next</div>
-                            </div>
-                          </div>
-                    </div>
+                <div class="row m-auto d-flex justify-content-between">
+                  <div class="col col-3 btn m-3 btn-primary" onclick="move()">
+                    Previous
+                  </div>
+                  <div class="col col-3 btn m-3 btn-primary" onclick="move()">
+                    Next
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-
-
-
-
-
-
-     
-    </body>
-
+  </body>
 </html>

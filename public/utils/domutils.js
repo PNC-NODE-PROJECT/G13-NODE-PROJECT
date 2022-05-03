@@ -6,13 +6,14 @@
  * @return : create dom to create to display all the quizzes
  */
 export function listQuiz(quizzes) {
-  let contentQuiz = document.querySelector(".content-quiz");
+  let contentQuiz = document.querySelector("#content-quiz");
   if (quizzes.length > 0) {
 
     contentQuiz.remove();
     // contain quiz
     let content = document.createElement("div");
-    content.className = ".content-quiz w-50 m-auto mt-5";
+    content.className = "content-quiz w-50 m-auto mt-5";
+    content.id = "content-quiz";
 
     quizzes.forEach(quiz => {
       let card = document.createElement("div");
@@ -122,12 +123,13 @@ export function checkQuiz(){
       correct = choice.parentElement.nextElementSibling.lastElementChild.value;
     }
   })
-  if(titleDom.value!=='' && questionDom.value!=='' && scoreDom.value!== '' && choices.length>3){
+  if(titleDom.value!=='' && questionDom.value!=='' && scoreDom.value!== '0' && choices.length>3){
     newQuiz={title:titleDom.value,question:questionDom.value,choices:choices,score:scoreDom.value,correct:correct};
 
-   return newQuiz;
+   return newQuiz;  
   }else{
     window.alert('try to fill all input :');
+    return false;
   };
 }
 export function hide(element) {
