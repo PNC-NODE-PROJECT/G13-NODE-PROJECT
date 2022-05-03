@@ -45,7 +45,6 @@ export function listQuiz(quizzes) {
       let choices = quiz.choices;
 
       for (let choice of choices) {
-        console.log(choice);
         let choiceDom = document.createElement("p");
         if (choice === quiz.correct) {
           choiceDom.className = "card-text text-success";
@@ -116,11 +115,11 @@ export function checkQuiz(){
   let correct= "";
   choicesDom.forEach(choice=>{
     let valueOfChocie =choice.parentElement.nextElementSibling.lastElementChild.value;
-    console.log(valueOfChocie);
     if(valueOfChocie!==''){
       choices.push(valueOfChocie);  
     }
     if(choice.checked){
+  
       correct = choice.parentElement.nextElementSibling.lastElementChild.value;
     }
   })
@@ -141,6 +140,62 @@ export function show(element) {
 }
 
 
+/* @param {*} quiz 
+* @return : disply a quiz that user want to edit 
+ */
+
+ export function displayAquiz(quiz) {
+ let titleDom = document.querySelector("#newTitle");
+ let questionDom = document.querySelector("#newQuestion");
+ let scoreDom = document.querySelector("#newScore");
+ let choicesDom = document.querySelectorAll(".newChoice");
+
+ titleDom.value = quiz.title;
+ questionDom.value = quiz.question;
+ scoreDom.value = quiz.score;
+ let choices = quiz.choices;
+
+ for(let index in choicesDom){
+   if(index<4){
+     choicesDom[index].parentElement.nextElementSibling.lastElementChild.value = choices[index];
+     if(choices[index]===quiz.correct){
+       choicesDom[index].checked = true;
+     }
+
+ }
+}
+ }
+
+ /**
+  * 
+  * @returns udate quiz by id 
+  */
+  export function checkEditQuiz(){
+    let titleDom = document.querySelector("#newTitle");
+    let questionDom = document.querySelector("#newQuestion");
+    let scoreDom = document.querySelector("#newScore");
+    let choicesDom = document.querySelectorAll(".newChoice");
+    let choices = [];
+    let newQuiz = {};
+    let correct= "";
+    choicesDom.forEach(choice=>{
+      let valueOfChocie =choice.parentElement.nextElementSibling.lastElementChild.value;
+      console.log(valueOfChocie);
+      if(valueOfChocie!==''){
+        choices.push(valueOfChocie);  
+      }
+      if(choice.checked){
+        correct = choice.parentElement.nextElementSibling.lastElementChild.value;
+      }
+    })
+    if(titleDom.value!=='' && questionDom.value!=='0' && scoreDom.value!== '' && choices.length>3){
+      newQuiz={title:titleDom.value,question:questionDom.value,choices:choices,score:scoreDom.value,correct:correct};
+  
+     return newQuiz;
+    }else{
+      window.alert('try to fill all input :');
+    };
+  }
 export function playQuiz() {
 
 }
