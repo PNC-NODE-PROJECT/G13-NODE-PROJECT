@@ -6,7 +6,8 @@
  * @return : create dom to create to display all the quizzes
  */
 export function listQuiz(quizzes) {
-  let contentQuiz = document.querySelector("#content-quiz");
+  let container = document.getElementById('container');
+  let contentQuiz = document.querySelector(".content-quiz");
   if (quizzes.length > 0) {
 
     contentQuiz.remove();
@@ -91,7 +92,7 @@ export function listQuiz(quizzes) {
       content.appendChild(card);
 
     })
-    document.body.appendChild(content);
+    container.appendChild(content);
   } else {
     let imgDom = document.createElement("img");
     imgDom.setAttribute("src", "../image/empty.png");

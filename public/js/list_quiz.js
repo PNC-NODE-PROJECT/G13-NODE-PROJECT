@@ -30,7 +30,6 @@ function createQuiz() {
 function checked(e) {
   e.preventDefault();
   console.log("checked");
-  let id = "";
   let btnUpdate = document.querySelector('.btnUpdate');
   if(e.target.className==="btn-delete btn btn-danger"){
     deleteQuiz(e.target.dataset);
@@ -39,10 +38,12 @@ function checked(e) {
     deleteQuiz(e.target.parentElement.dataset);
   }
   else if (e.target.className==="fa fa-edit"){
-    id =  e.target.parentElement.dataset.id;
-    btnUpdate.dataset.id = id;
+
+    btnUpdate.dataset.id =e.target.parentElement.dataset.id;
     
     getQuizById(e.target.parentElement.dataset);
+  }else{
+    console.log("not found");
   }
 }
 
@@ -57,10 +58,11 @@ function deleteQuiz(id) {
  
 // call back function
 displayQuiz();
-
 let btnSubmit  = document.querySelector("#btnSubmit");
 btnSubmit.addEventListener("click",createQuiz);
-let contentQuiz = document.querySelector(".content-quiz");
-document.body.addEventListener('click',checked);
+// let contentQuiz = document.getElementById('container');
+
+
+document.getElementById('container').addEventListener('click',checked);
 
 
