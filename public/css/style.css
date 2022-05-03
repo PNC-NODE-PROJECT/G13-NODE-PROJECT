@@ -32,3 +32,11 @@ p{
     /* margin-top: 100px; */
    
 }
+
+/* play */
+
+.answer-containers{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1;
+}

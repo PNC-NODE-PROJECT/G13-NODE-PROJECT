@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>G13</title>
   </head>
   <body>
@@ -30,34 +28,12 @@
       </div>
     </nav>
     <!-- THEARA RIT(WEB 2022), [5/1/2022 11:35 AM] -->
-<div class="playQuiz mt-5">
-        <div class="card m-auto mt-5 col-6">
-            <div class="card-body">
-                <div class="card-title d-flex justify-content-between">
-                    <h2>Grammer</h2>
-                    <h5 class="mt-2">50pt</h5>
-                </div>
-                <hr>
-                <div class="card-text">
-                    <div id="quiz">
-                        <div id="question">1. MY QUESTION</div>
-                        <div class="container">
-                            <div class="row m-auto ">
-                              <div class="col btn m-3" id="A" onclick="checkAnswer ('A')" style="background: #C18FF4 ">Column</div>
-                              <div class="col btn m-3" id ="B" onclick="checkAnswer ('B')"style="background: #C18FF4 ">Column</div>
-                              <div class="w-100"></div>
-                              <div class="col btn m-3" id="C" onclick="checkAnswer ('C')"style="background: #C18FF4 ">Column</div>
-                              <div class="col btn m-3" id="D" onclick="checkAnswer ('D')"style="background: #C18FF4 ">Column</div>
-                            </div>
-                            <div class="row m-auto d-flex justify-content-between">
-                                <div class="col col-3 btn m-3 btn-primary" onclick="move()">Previous</div>
-                                <div class="col col-3 btn m-3 btn-primary" onclick="move()">Next</div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="playQuiz mt-5">
+        
+    </div>
+
+    <div class="score" style="display: none;">
+      <p id="score-show"></p>
     </div>
 
 
@@ -66,6 +42,6 @@
 
 
      
-    </body>
-
+</body>
+<script src="../js/quiz.js" type="module"></script>
 </html>
