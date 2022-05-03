@@ -40,3 +40,16 @@ p{
     grid-template-columns: repeat(2,1fr);
     gap: 1;
 }
+.score {
+    width: 30%;
+    margin: auto;
+    background-color: rgb(233, 83, 238);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+#score-show{
+    font-size: 30px;
+    font-weight: bold;
+}

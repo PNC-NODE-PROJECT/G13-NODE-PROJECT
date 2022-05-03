@@ -6,13 +6,15 @@
  * @return : create dom to create to display all the quizzes
  */
 export function listQuiz(quizzes) {
+  let container = document.getElementById('container');
   let contentQuiz = document.querySelector(".content-quiz");
   if (quizzes.length > 0) {
 
     contentQuiz.remove();
     // contain quiz
     let content = document.createElement("div");
-    content.className = ".content-quiz w-50 m-auto mt-5";
+    content.className = "content-quiz w-50 m-auto mt-5";
+    content.id = "content-quiz";
 
     quizzes.forEach(quiz => {
       let card = document.createElement("div");
@@ -43,7 +45,6 @@ export function listQuiz(quizzes) {
       let choices = quiz.choices;
 
       for (let choice of choices) {
-        console.log(choice);
         let choiceDom = document.createElement("p");
         if (choice === quiz.correct) {
           choiceDom.className = "card-text text-success";
@@ -90,7 +91,7 @@ export function listQuiz(quizzes) {
       content.appendChild(card);
 
     })
-    document.body.appendChild(content);
+    container.appendChild(content);
   } else {
     let imgDom = document.createElement("img");
     imgDom.setAttribute("src", "../image/empty.png");
@@ -114,20 +115,21 @@ export function checkQuiz(){
   let correct= "";
   choicesDom.forEach(choice=>{
     let valueOfChocie =choice.parentElement.nextElementSibling.lastElementChild.value;
-    console.log(valueOfChocie);
     if(valueOfChocie!==''){
       choices.push(valueOfChocie);  
     }
     if(choice.checked){
+  
       correct = choice.parentElement.nextElementSibling.lastElementChild.value;
     }
   })
-  if(titleDom.value!=='' && questionDom.value!=='' && scoreDom.value!== '' && choices.length>3){
+  if(titleDom.value!=='' && questionDom.value!=='' && scoreDom.value!== '0' && choices.length>3){
     newQuiz={title:titleDom.value,question:questionDom.value,choices:choices,score:scoreDom.value,correct:correct};
 
-   return newQuiz;
+   return newQuiz;  
   }else{
     window.alert('try to fill all input :');
+    return false;
   };
 }
 export function hide(element) {
@@ -135,4 +137,65 @@ export function hide(element) {
 }
 export function show(element) {
   element.style.display = 'block';
+}
+
+
+/* @param {*} quiz 
+* @return : disply a quiz that user want to edit 
+ */
+
+ export function displayAquiz(quiz) {
+ let titleDom = document.querySelector("#newTitle");
+ let questionDom = document.querySelector("#newQuestion");
+ let scoreDom = document.querySelector("#newScore");
+ let choicesDom = document.querySelectorAll(".newChoice");
+
+ titleDom.value = quiz.title;
+ questionDom.value = quiz.question;
+ scoreDom.value = quiz.score;
+ let choices = quiz.choices;
+
+ for(let index in choicesDom){
+   if(index<4){
+     choicesDom[index].parentElement.nextElementSibling.lastElementChild.value = choices[index];
+     if(choices[index]===quiz.correct){
+       choicesDom[index].checked = true;
+     }
+
+ }
+}
+ }
+
+ /**
+  * 
+  * @returns udate quiz by id 
+  */
+  export function checkEditQuiz(){
+    let titleDom = document.querySelector("#newTitle");
+    let questionDom = document.querySelector("#newQuestion");
+    let scoreDom = document.querySelector("#newScore");
+    let choicesDom = document.querySelectorAll(".newChoice");
+    let choices = [];
+    let newQuiz = {};
+    let correct= "";
+    choicesDom.forEach(choice=>{
+      let valueOfChocie =choice.parentElement.nextElementSibling.lastElementChild.value;
+      console.log(valueOfChocie);
+      if(valueOfChocie!==''){
+        choices.push(valueOfChocie);  
+      }
+      if(choice.checked){
+        correct = choice.parentElement.nextElementSibling.lastElementChild.value;
+      }
+    })
+    if(titleDom.value!=='' && questionDom.value!=='0' && scoreDom.value!== '' && choices.length>3){
+      newQuiz={title:titleDom.value,question:questionDom.value,choices:choices,score:scoreDom.value,correct:correct};
+  
+     return newQuiz;
+    }else{
+      window.alert('try to fill all input :');
+    };
+  }
+export function playQuiz() {
+
 }

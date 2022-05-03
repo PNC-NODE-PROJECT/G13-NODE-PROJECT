@@ -20,17 +20,22 @@ function renderQuestion() {
         let choices = question.choices;
 
         let card_container = document.createElement("div");
-        card_container.className = "ard m-auto mt-5 col-6";
+        card_container.className = "card m-auto mt-5 col-6";
+
         quiz_play.appendChild(card_container);
         let card_body = document.createElement("div");
+
         card_body.className = "card-body";
         card_container.appendChild(card_body);
+        
         let card_title = document.createElement("div");
         card_title.className = "card-title d-flex justify-content-between";
         card_body.appendChild(card_title);
+
         let h2 = document.createElement("h2");
-        h2.id = "title";
-        h2.textContent = question.title;
+        h2.id = "question";
+        h2.textContent = question.question;
+        
         let h5 = document.createElement("h5");
         h5.className = "mt-2";
         h5.id = "score";
@@ -42,10 +47,8 @@ function renderQuestion() {
         let card_text = document.createElement("div");
         card_text.className = "card-text";
         card_body.appendChild(card_text);
-        let div = document.createElement("div");
-        div.id = "question";
-        div.textContent = question.question
-        card_text.appendChild(div);
+
+      
         let container = document.createElement("div");
         container.className = "container";
         card_text.appendChild(container);
@@ -104,17 +107,8 @@ function showScore() {
     axios.get(URL).then((results) => {
     // // calculate the amount of question percent answered by the user
       let questions = results.data;
-      const scorePerCent = Math.round((100 * score) / questions.length);
-    //   saveUserScore(scorePerCent);
-      // // choose the image based on the scorePerCent
-    //   let image = "../../img/";
-    //   if (scorePerCent < 50) {
-    //     image += "20.png";
-    //   } else if (scorePerCent >= 50) {
-    //     image += "80.png";
-    //   } 
-  
-      dom_score_p.textContent = scorePerCent + " %";
+      const scorePerCent = Math.round((100 * score) / questions.length);  
+      dom_score_p.textContent = "Your Score is : " +scorePerCent + " %";
     });
   }
 renderQuestion();
