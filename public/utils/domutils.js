@@ -1,5 +1,10 @@
 
-// display all quizzes
+/**
+ * 
+ * @param {*} quizzes 
+ * 
+ * @return : create dom to create to display all the quizzes
+ */
 export function listQuiz(quizzes) {
   let contentQuiz = document.querySelector(".content-quiz");
   if (quizzes.length > 0) {
@@ -95,12 +100,44 @@ export function listQuiz(quizzes) {
 
   }
 }
+
+/**
+ * this function to check the fiel that user fill ensure that all in formation are valid
+ */
+export function checkQuiz(){
+  let titleDom = document.querySelector("#title");
+  let questionDom = document.querySelector("#question");
+  let scoreDom = document.querySelector("#score");
+  let choicesDom = document.querySelectorAll(".choice");
+  let choices = [];
+  let newQuiz = {};
+  let correct= "";
+  choicesDom.forEach(choice=>{
+    let valueOfChocie =choice.parentElement.nextElementSibling.lastElementChild.value;
+    console.log(valueOfChocie);
+    if(valueOfChocie!==''){
+      choices.push(valueOfChocie);  
+    }
+    if(choice.checked){
+      correct = choice.parentElement.nextElementSibling.lastElementChild.value;
+    }
+  })
+  if(titleDom.value!=='' && questionDom.value!=='' && scoreDom.value!== '' && choices.length>3){
+    newQuiz={title:titleDom.value,question:questionDom.value,choices:choices,score:scoreDom.value,correct:correct};
+
+   return newQuiz;
+  }else{
+    window.alert('try to fill all input :');
+  };
+}
 export function hide(element) {
   element.style.display = "none";
 }
 export function show(element) {
   element.style.display = 'block';
 }
+
+
 export function playQuiz() {
 
 }
