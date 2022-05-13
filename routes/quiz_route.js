@@ -3,7 +3,6 @@ const router = express.Router();
 
 const serverModel = require("../models/quiz_model");
 
-
 // get all quizzes route
 router.get("/", (req, res) => {
   let quizzes = serverModel.getAllQuizzes();
@@ -11,16 +10,15 @@ router.get("/", (req, res) => {
 });
 
 /**
-* return one quiz route
-*/
+ * return one quiz route
+ */
 router.get("/:id", (req, res) => {
   let idOfQuiz = req.params.id;
-  let message;
-  let getIdOfQuiz = serverModel.getOneQuiz(idOfQuiz);
- 
-  res.send(getIdOfQuiz);
-})
 
+  let getIdOfQuiz = serverModel.getOneQuiz(idOfQuiz);
+
+  res.send(getIdOfQuiz);
+});
 
 // Create route
 router.post("/", (req, res) => {
@@ -48,18 +46,24 @@ router.delete("/:id", (req, res) => {
     message = "not delete";
   }
   res.send({ message: message });
-})
+});
 
 /**
  * @params : id of quiz
- * @returns : this route for updateQuiz by id 
+ * @returns : this route for updateQuiz by id
  */
 
- router.patch("/:id",(req, res)=>{
+router.patch("/:id", (req, res) => {
   let id = req.params.id;
-  serverModel.updateQuiz(req.body, id);
-  res.send("Update successfully");
-})
+  message = "";
+  let isUpdate = serverModel.updateQuiz(req.body, id);
+  if (isUpdate) {
+    message = "updated successfully !";
+  } else {
+    message = "could not updated";
+  }
+  res.send({ message: message });
+});
 module.exports = router;
 
 /**

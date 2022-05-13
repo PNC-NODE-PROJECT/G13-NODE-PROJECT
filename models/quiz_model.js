@@ -56,11 +56,17 @@ function getOneQuiz(idOneQuiz) {
  * @returns : create a quiz
  *  the function wil be return true if all data are valid
  */
-function createQuiz(newQuize) {
+function createQuiz(newQuiz) {
   let quizzes = load();
-    newQuize.id = uuidv4();
-    quizzes.push(newQuize);
+  let isCreated =false;
+    newQuiz.id = uuidv4();
+    if(newQuiz.title!=='' && newQuiz.question!=='' && newQuiz.corrections!=='' && newQuiz.choices.length==4 && newQuiz.score!=='')  {
+
+      quizzes.push(newQuiz);
+      isCreated = true;
+    }
     save(quizzes);
+    return isCreated;
 }
 
 /**
@@ -85,7 +91,7 @@ function removeQuizeById(id) {
   return isDeleted;
 }
 /**
- * 
+ *  
  * @param {*} quiz 
  * @param {*} id 
  * @returns : update question function by id that recieved from client 
@@ -93,20 +99,23 @@ function removeQuizeById(id) {
 
 function updateQuiz(quiz,id){
   let quizzes = load();
-  let status=false;
+  let isUpdated = false;
+
   let index = quizzes.findIndex((quiz) => quiz.id==id);
   if(index !== -1){
-     
+      if(quiz.title!=='' && quiz.question !==''&&  quiz.choices.length==4 && quiz.score!=='' && quiz.corrections!==''){
         quizzes[index].title = quiz.title;
         quizzes[index].question = quiz.question;
         quizzes[index].choices = quiz.choices;
-        quizzes[index].correct = quiz.correct;
+        quizzes[index].correction = quiz.correction;
         save(quizzes);
-      
+        isUpdated = true;
+    
+      }
     }else{
       console.log("error");
     }
-    return status;
+    return isUpdated;
 }
 /**
  * export module
